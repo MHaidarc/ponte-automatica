@@ -19,9 +19,9 @@ void loop() {
   int estadoBotao1 = digitalRead(BOTAO_1);
   int estadoBotao2 = digitalRead(BOTAO_2);
  
-  if (estadoBotao1 == HIGH) {
+  if (estadoBotao1) {
     motor_subir();
-  } else if (estadoBotao2 == HIGH) {
+  } else if (estadoBotao2) {
     motor_descer();
   } else {
     motor_parar();
