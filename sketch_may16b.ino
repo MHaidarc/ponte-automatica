@@ -19,21 +19,21 @@ void loop() {
   int estadoBotao1 = digitalRead(BOTAO_1);
   int estadoBotao2 = digitalRead(BOTAO_2);
  
-  while (estadoBotao1 == HIGH) {
+  if (estadoBotao1 == HIGH) {
     motor_subir();
-  }
-  while (estadoBotao2 == HIGH) {
+  } else if (estadoBotao2 == HIGH) {
     motor_descer();
+  } else {
+    motor_parar();
   }
-  motor_parar();
 }
 
 void motor_subir() {
   digitalWrite(MOTOR_1_DIRECAO, LOW);
   analogWrite(MOTOR_1_VEL, 255);
 
-  digitalWrite(MOTOR_2_DIRECAO, LOW);
-  analogWhrite(MOTOR_2_VEL,255);
+  digitalWrite(MOTOR_2_DIRECAO, HIGH);
+  analogWrite(MOTOR_2_VEL,255);
 }
 
 void motor_parar() {
@@ -45,6 +45,6 @@ void motor_descer() {
   digitalWrite(MOTOR_1_DIRECAO, HIGH);
   analogWrite(MOTOR_1_VEL, 255);
 
-  digitalWrite(MOTOR_2_DIRECAO, HIGH);
-  analogWhrite(MOTOR_2_VEL,255);
+  digitalWrite(MOTOR_2_DIRECAO, LOW);
+  analogWrite(MOTOR_2_VEL,255);
 }
